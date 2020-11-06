@@ -8,7 +8,18 @@ from nltk.stem import SnowballStemmer
 # nltk.download('punkt')
 # nltk.download('stopwords')
 
+# Menerima input berupa array of string yang 
+# I.S sudah dihilangkan stopword dan punctuationnya
+def stemming(text):
+    # Create a Snowball stemmer 
+    stemmer = SnowballStemmer('english')
+    stemmed_text = []
+    for word in text:
+        stemmed_text.append(stemmer.stem(word))
+    return stemmed_text
 
+
+# Return array of stringg yang sudah diremove stopwords dan lowercase
 def removeStopwords(sentence):
     # Lowecase sentence
     sentence = sentence.lower()
@@ -27,6 +38,7 @@ def removeStopwords(sentence):
 
 
 # Menghapus punctuation menggunakan module re
+# Mengembalikan string
 def removePunctuantion(sentence):
     sentence = re.sub(r'[^\w\s]', '', str(sentence))
     return sentence
