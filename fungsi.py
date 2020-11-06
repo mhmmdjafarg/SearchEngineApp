@@ -1,5 +1,5 @@
 import re
-
+import os
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import SnowballStemmer
@@ -141,3 +141,13 @@ for j in range(1, len(string_array)):
 print(ranks)
 
 
+def txtToString():
+    path = os.path.join(os.getcwd() , 'uploads')
+    if os.path.isdir(path):
+        listFile = os.listdir(path) #kebentuk array ada nama2 file di uploads
+        arrayStringSemua = []
+        for i in listFile:
+            fileDirectory = os.path.join(path , i)
+            f = open(fileDirectory , 'r')
+            arrayStringSemua.append(f.read())
+        return arrayStringSemua
