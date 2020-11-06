@@ -150,4 +150,5 @@ def txtToString():
             fileDirectory = os.path.join(path , i)
             f = open(fileDirectory , 'r')
             arrayStringSemua.append(f.read())
+            f.close()
         return arrayStringSemua

@@ -1,6 +1,7 @@
 import os
 from flask import Flask, request, redirect, render_template, flash
 from werkzeug.utils import secure_filename
+import shutil
 
 app = Flask(__name__)
 app.secret_key = "tubesalgeo" #random secret key, can be anything
@@ -48,6 +49,14 @@ def upload_file():
         flash('File(s) successfully uploaded')
         return redirect('/')
 
+# @app.route('/flush')
+# def flush():
+#     if (os.path.isdir(UPLOAD_FOLDER)):
+#         shutil.rmtree(UPLOAD_FOLDER)
+#         flash('File(s) succesfully flushed')
+#     else:
+#         flash('There are no uploads yet')
+#     return redirect('/')
 
 if __name__ == '__main__':
   app.run(debug = True)
