@@ -8,6 +8,24 @@ from nltk.stem import SnowballStemmer
 # nltk.download('punkt')
 # nltk.download('stopwords')
 
+# Mengembalikan kaliamt pertama atau maximal 50 char
+# Menerima input string dari full text
+# Kekurangan mungkin kalau input berupa format html akan kesulitan
+def getFirstSentence(text):
+    EndSentece = ".!?:;"
+    countChar = 0
+    firstSentence = ""
+    for char in text:
+        firstSentence += char
+        countChar += 1
+        if char in EndSentece:
+            break
+        if countChar > 70 and char == ' ':
+            firstSentence += "...."
+            break
+    return firstSentence
+
+
 # Menerima input berupa array of string yang 
 # I.S sudah dihilangkan stopword dan punctuationnya
 def stemming(text):
