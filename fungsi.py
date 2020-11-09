@@ -62,6 +62,9 @@ def removePunctuantion(sentence):
     return sentence
 
 
+# Menampilkan total data banyaknya kata
+# indeks baris untuk kata indeks kolom untuk 
+# contoh : data[2][2] artinya banyaknya kata ke-i=2 di dokumen 2 
 def printdata(data):
     for i in range(len(data)):
         for j in range(len(data[i])):
@@ -69,6 +72,8 @@ def printdata(data):
         print()
 
 
+# list semua word yang ada di sebuah text,
+# kemudian setiap kata akan muncul di array w.
 def word_list_text(w, text):
     for char in '-.,\n':
         text = text.replace(char, ' ')
@@ -81,6 +86,10 @@ def word_list_text(w, text):
     return w
 
 
+# list semua word yg ada di text.
+# setiap kata akan diperiksa, 
+# jika sudah ada di array w maka tidak akan di masukkan ke array
+# jika belum ada maka akan dimasukkan
 def wordlist(w, text):
     for char in '-.,\n':
         text = text.replace(char, ' ')
@@ -94,20 +103,32 @@ def wordlist(w, text):
     return w
 
 
+# list semua word yang muncul di semua dokumen
 def word_list_total(string_array):
+    # inisiasi w dengan array kosong
     w = []
 
+    # setiap dokumen (text) akan dilakukan fungsi wordlist
     for text in string_array:
         w = wordlist(w, text)
 
     return w
 
 
+# Menghitung banyaknya kata word di dalam dokumen text.
 def word_count(word, text):
+    # dari text akan diubah terlebih dahulu menjadi array of word w
+    # misal "aku mau dia mau" menjadi ["aku","mau","dia","mau"]
     w = []
     w = word_list_text(w, text)
+    
+    # inisiasi count dengan 0
     count = 0
 
+    # pengecekan semua kata pada text.
+    # jika kata pada text (word_in_text) merupakan 
+    # kata yang ingin dicari banyaknya (word),
+    # maka count naik. 
     for word_in_text in w:
         if word_in_text == word:
             count += 1
