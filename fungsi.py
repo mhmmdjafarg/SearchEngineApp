@@ -16,6 +16,17 @@ def ProcessString(text):
     list_word = stemming(list_word)
     return list_word
 
+
+# dilakukan ProcessString ke semua text pada array of text
+def ProcessAllString(array_of_text):
+    array_of_array_of_words = []
+
+    for text in array_of_text:
+        array_of_array_of_words.append(ProcessString(text))
+
+    return array_of_array_of_words
+
+
 # Mengembalikan kaliamt pertama atau maximal 50 char
 # Menerima input string dari full text
 # Kekurangan mungkin kalau input berupa format html akan kesulitan
@@ -80,64 +91,40 @@ def printdata(data):
         print()
 
 
-# list semua word yang ada di sebuah text,
-# kemudian setiap kata akan muncul di array w.
-def word_list_text(w, text):
-    for char in '-.,\n':
-        text = text.replace(char, ' ')
-    text = text.lower()
-
-    word_list = text.split()
-
-    for word in word_list:
-        w.append(word)
-    return w
-
-
-# list semua word yg ada di text.
+# worded_text adalah sebuah text yang sudah menjadi pecahan word2.
 # setiap kata akan diperiksa, 
 # jika sudah ada di array w maka tidak akan di masukkan ke array
 # jika belum ada maka akan dimasukkan
-def wordlist(w, text):
-    for char in '-.,\n':
-        text = text.replace(char, ' ')
-    text = text.lower()
+def wordlist(w, array_of_words):
 
-    word_list = text.split()
-
-    for word in word_list:
+    for word in array_of_words:
         if word not in w:
             w.append(word)
     return w
 
 
 # list semua word yang muncul di semua dokumen
-def word_list_total(string_array):
+def word_list_total(array_of_array_of_words):
     # inisiasi w dengan array kosong
     w = []
 
-    # setiap dokumen (text) akan dilakukan fungsi wordlist
-    for text in string_array:
-        w = wordlist(w, text)
+    # setiap dokumen akan dilakukan fungsi wordlist
+    for array_of_words in array_of_array_of_words:
+        w = wordlist(w, array_of_words)
 
     return w
 
 
 # Menghitung banyaknya kata word di dalam dokumen text.
-def word_count(word, text):
-    # dari text akan diubah terlebih dahulu menjadi array of word w
-    # misal "aku mau dia mau" menjadi ["aku","mau","dia","mau"]
-    w = []
-    w = word_list_text(w, text)
-    
+# word adalah kata yang ingin dicari banyaknya pada array_of_words.
+def word_count(word, array_of_words):
     # inisiasi count dengan 0
     count = 0
-
     # pengecekan semua kata pada text.
     # jika kata pada text (word_in_text) merupakan 
     # kata yang ingin dicari banyaknya (word),
     # maka count naik. 
-    for word_in_text in w:
+    for word_in_text in array_of_words:
         if word_in_text == word:
             count += 1
 
@@ -163,27 +150,30 @@ def similarity(v, u):
     return dot_product(v, u)/(panjang(v)*panjang(u))
 
 
-string_array = ["bolu biru",
-                "aku beli bolu biru makan bolu biru", "bolu warna biru"]
+string_array = ["blue cake",
+                "i want blue cake, and he wants cake of blue", "blue colored cake"]
 
-word_list = word_list_total(string_array)
+array_of_array_of_words = ProcessAllString(string_array)
 
+word_list = word_list_total(array_of_array_of_words)
+
+print(array_of_array_of_words)
 print(word_list)
 
-word_data = [[0 for j in range(len(string_array))]
+word_data = [[0 for j in range(len(array_of_array_of_words))]
              for i in range(len(word_list))]
 
 for i in range(len(word_list)):
-    for j in range(len(string_array)):
-        word_data[i][j] = word_count(word_list[i], string_array[j])
+    for j in range(len(array_of_array_of_words)):
+        word_data[i][j] = word_count(word_list[i], array_of_array_of_words[j])
 
 printdata(word_data)
 
 query = [word_data[i][0] for i in range(len(word_list))]
-ranks = [0 for i in range(len(string_array)-1)]
-array_of_sim = [0 for i in range(len(string_array)-1)]
+ranks = [0 for i in range(len(array_of_array_of_words)-1)]
+array_of_sim = [0 for i in range(len(array_of_array_of_words)-1)]
 
-for j in range(1, len(string_array)):
+for j in range(1, len(array_of_array_of_words)):
     word_vektor = [word_data[word][j] for word in range(len(word_list))]
     sim = similarity(query, word_vektor)
     idx = j
