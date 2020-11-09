@@ -91,7 +91,7 @@ def printdata(data):
         print()
 
 
-# worded_text adalah sebuah text yang sudah menjadi pecahan word2.
+# worded_text adalah sebuah text yang sudah menjadi pecahan word-word.
 # setiap kata akan diperiksa, 
 # jika sudah ada di array w maka tidak akan di masukkan ke array
 # jika belum ada maka akan dimasukkan
@@ -115,7 +115,7 @@ def word_list_total(array_of_array_of_words):
     return w
 
 
-# Menghitung banyaknya kata word di dalam dokumen text.
+# Menghitung banyaknya kata word di array_of_words.
 # word adalah kata yang ingin dicari banyaknya pada array_of_words.
 def word_count(word, array_of_words):
     # inisiasi count dengan 0
@@ -131,6 +131,7 @@ def word_count(word, array_of_words):
     return count
 
 
+# Menghitung panjang sebuah vektor a
 def panjang(a):
     total = 0
     for i in range(len(a)):
@@ -138,6 +139,7 @@ def panjang(a):
     return total**0.5
 
 
+# Menghitung dot product dari dua buah vektor u dan v
 def dot_product(v, u):
     # prekondisi : len(v) == len(u)
     result = 0
@@ -146,48 +148,73 @@ def dot_product(v, u):
     return result
 
 
+# Menghitung similarity dari dua buah vektor
 def similarity(v, u):
     return dot_product(v, u)/(panjang(v)*panjang(u))
 
 
-string_array = ["blue cake",
-                "i want blue cake, and he wants cake of blue", "blue colored cake"]
+# Menghasilkan data tabel banyaknya setiap kata dalam setiap dokumen
+# dengan representasi matriks
+# misal word_data[2][2] artinya banyaknya kata ke-2 pada wordlist 
+# yang ditemukan di dokumen 2
+def WordData(array_of_string):
+    # Mengubah semua string/text pada array_of_string menjadi array_of_word
+    # dari array_of_string menjadi array_of_array_of_words
+    array_of_array_of_words = ProcessAllString(array_of_string)
 
-array_of_array_of_words = ProcessAllString(string_array)
+    # word_list adalah semua kata yang ada pada query dan semua dokumen
+    word_list = word_list_total(array_of_array_of_words)
 
-word_list = word_list_total(array_of_array_of_words)
+    # Untuk debugging, nanti dihapus aja
+    print(array_of_array_of_words)
+    print(word_list)
 
-print(array_of_array_of_words)
-print(word_list)
+    # inisiasi word data
+    word_data = [[0 for j in range(len(array_of_array_of_words))]
+                for i in range(len(word_list))]
 
-word_data = [[0 for j in range(len(array_of_array_of_words))]
-             for i in range(len(word_list))]
+    # pengisian word data dengan melakukan word count 
+    # untuk setiap kata dan dokumen
+    # dalam hal ini, dokumen berupa array of word (pecahan kata-kata) 
+    for i in range(len(word_list)):
+        for j in range(len(array_of_array_of_words)):
+            word_data[i][j] = word_count(word_list[i], array_of_array_of_words[j])
 
-for i in range(len(word_list)):
-    for j in range(len(array_of_array_of_words)):
-        word_data[i][j] = word_count(word_list[i], array_of_array_of_words[j])
+    return word_data
 
-printdata(word_data)
 
-query = [word_data[i][0] for i in range(len(word_list))]
-ranks = [0 for i in range(len(array_of_array_of_words)-1)]
-array_of_sim = [0 for i in range(len(array_of_array_of_words)-1)]
+# Menghasilkan array of integer yang terurut mengecil 
+# merepresentasikan urutan dokumen dari yang similariti-nya paling tinggi 
+def Ranking(word_data):
+    # Pembentukan vektor query untuk mencari similarity
+    query = [word_data[i][0] for i in range(len(word_data))]
 
-for j in range(1, len(array_of_array_of_words)):
-    word_vektor = [word_data[word][j] for word in range(len(word_list))]
-    sim = similarity(query, word_vektor)
-    idx = j
-    for i in range(j):
-        if sim > array_of_sim[i]:
-            temp = array_of_sim[i]
-            array_of_sim[i] = sim
-            sim = temp
+    # inisiasi array of similarity dan ranks
+    # len dikurang 1 karena tidak termasuk query
+    ranks = [0 for i in range(len(word_data[0])-1)]
+    array_of_sim = [0 for i in range(len(word_data[0])-1)]
 
-            temp = ranks[i]
-            ranks[i] = j
-            j = temp
+    # setiap dokumen akan dibentuk word_vektor diperoleh dari word_data
+    # dan akan dicari sim(query,word_vektor)
+    for j in range(1, len(word_data[0])):
+        word_vektor = [word_data[word][j] for word in range(len(word_data))]
+        sim = similarity(query, word_vektor)
+        
+        # setelah didapatkan sim akan dimasukkan ke array of sim
+        # dan indeks dari dokumen, yaitu j akan dimasukkan pada ranks.
+        # keduanya dimasukkan pada array masing-masing 
+        # secara terurut membesar berdasarkan sim
+        for i in range(j):
+            if sim >= array_of_sim[i]:
+                temp = array_of_sim[i]
+                array_of_sim[i] = sim
+                sim = temp
 
-print(ranks)
+                temp = ranks[i]
+                ranks[i] = j
+                j = temp
+
+    return ranks
 
 
 def txtToString():
@@ -201,3 +228,16 @@ def txtToString():
             arrayStringSemua.append(f.read())
             f.close()
         return arrayStringSemua
+
+
+
+string_array = ["blue cake",
+                "i want blue cake, and he wants cake of blue", "red colored cake"]
+
+word_data = WordData(string_array)
+
+printdata(word_data)
+
+ranks = Ranking(word_data)
+
+print(ranks)
