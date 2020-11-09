@@ -7,6 +7,7 @@ sentence = fungsi.removePunctuantion(sentence)
 print(sentence)
 
 
+
 listword = fungsi.removeStopwords(sentence)
 print(listword)
 stem = fungsi.stemming(listword)
