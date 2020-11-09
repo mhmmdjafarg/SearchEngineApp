@@ -6,6 +6,7 @@
     <script type=text/javascript> $(function() { $("#flush").click(function (event) { $.getJSON('/flush', { },
     function(data) { }); return false; }); }); </script> 
     <title>Document</title> -->
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <h1>Search Engine</h1>
@@ -31,8 +32,8 @@
 <!--     <input type="button" id = "flush" value = "Flush" /> -->
     <div class="search_box">
         <form action="" method="POST">
-            <input type="text" name="search">
-            <input type="submit">
+            <input class = "search" type="text" name="search", placeholder="Search here ...">
+            <input class="button" type="submit">
         </form>
     </div>
 </body>
