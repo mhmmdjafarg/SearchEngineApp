@@ -1,7 +1,9 @@
 import os
 from flask import Flask, request, redirect, render_template, flash
+from nltk.util import pr
 from werkzeug.utils import secure_filename
 import shutil
+import fungsi
 
 app = Flask(__name__)
 app.secret_key = "tubesalgeo" #random secret key, can be anything
@@ -26,10 +28,10 @@ def allowed_file(filename):
 
 @app.route("/", methods = ['POST', 'GET'])
 def home():
-  if(request.method == 'POST'):
+    if(request.method == 'POST'):
         text = request.form['search']
         print(text)
-  return render_template('home.html')
+    return render_template('home.html')
 
 @app.route('/upload', methods=['POST' , 'GET'])
 def upload_file():
