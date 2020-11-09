@@ -8,6 +8,14 @@ from nltk.stem import SnowballStemmer
 # nltk.download('punkt')
 # nltk.download('stopwords')
 
+# Menerima string dari text
+# F.S String sudah murni siap untuk diolah (sudah di stem, remove stopword, remove punctuation)
+def ProcessString(text):
+    text = removePunctuantion(text)
+    list_word = removeStopwords(text)
+    list_word = stemming(list_word)
+    return list_word
+
 # Mengembalikan kaliamt pertama atau maximal 50 char
 # Menerima input string dari full text
 # Kekurangan mungkin kalau input berupa format html akan kesulitan
