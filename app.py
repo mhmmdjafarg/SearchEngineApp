@@ -1,9 +1,9 @@
 import os
-from flask import Flask, request, redirect, render_template, flash
+from flask import Flask, session, request, redirect, render_template, flash
 from nltk.util import pr
 from werkzeug.utils import secure_filename
 import shutil
-import fungsi
+# import fungsi
 
 app = Flask(__name__)
 app.secret_key = "tubesalgeo" #random secret key, can be anything
@@ -29,8 +29,7 @@ def allowed_file(filename):
 @app.route("/", methods = ['POST', 'GET'])
 def home():
     if(request.method == 'POST'):
-        text = request.form['search']
-        print(text)
+        session['query'] = request.form['search']  #sekarang query bisa diolah
     return render_template('home.html')
 
 @app.route('/upload', methods=['POST' , 'GET'])
@@ -48,6 +47,8 @@ def upload_file():
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
+        path = os.path.join(os.getcwd() , 'uploads')
+        session['listfile'] = os.listdir(path) #menyimpan array nama2 filenya di session
         flash('File(s) successfully uploaded')
         return redirect('/')
 
