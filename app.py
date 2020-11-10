@@ -75,14 +75,13 @@ def upload_file():
         flash('File(s) successfully uploaded')
         return redirect('/')
 
-# @app.route('/flush')
-# def flush():
-#     if (os.path.isdir(UPLOAD_FOLDER)):
-#         shutil.rmtree(UPLOAD_FOLDER)
-#         flash('File(s) succesfully flushed')
-#     else:
-#         flash('There are no uploads yet')
-#     return redirect('/')
+@app.route('/flush')
+def flush():
+    if ('listfile' in session):
+        for i in session['listfile']:
+            os.remove(os.path.join(UPLOAD_FOLDER,i))
+        session.pop('listfile' , None)
+    return ("nothing")
 
 if __name__ == '__main__':
   app.run(debug = True)
