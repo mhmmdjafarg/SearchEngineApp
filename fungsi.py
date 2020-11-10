@@ -83,7 +83,7 @@ def removePunctuantion(sentence):
 
 # Menampilkan total data banyaknya kata
 # indeks baris untuk kata indeks kolom untuk 
-# contoh : data[2][2] artinya banyaknya kata ke-i=2 di dokumen 2 
+# contoh : data[3][5] artinya banyaknya kata ke-i=3 di dokumen 5 
 def printdata(data):
     for i in range(len(data)):
         for j in range(len(data[i])):
@@ -155,8 +155,8 @@ def similarity(v, u):
 
 # Menghasilkan data tabel banyaknya setiap kata dalam setiap dokumen
 # dengan representasi matriks
-# misal word_data[2][2] artinya banyaknya kata ke-2 pada wordlist 
-# yang ditemukan di dokumen 2
+# misal word_data[3][5] artinya banyaknya kata ke-3 pada wordlist 
+# yang ditemukan di dokumen 5
 def WordData(array_of_string):
     # Mengubah semua string/text pada array_of_string menjadi array_of_word
     # dari array_of_string menjadi array_of_array_of_words
