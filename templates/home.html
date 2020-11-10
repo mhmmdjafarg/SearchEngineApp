@@ -2,6 +2,18 @@
 
 <head>
     <meta charset="UTF-8">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type=text/javascript>
+            $(function() {
+              $('a#flush').bind('click', function() {
+                $.getJSON('/flush',
+                    function(data) {
+                  //do nothing
+                });
+                return false;
+              });
+            });
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script>
     <script type=text/javascript> $(function() { $("#flush").click(function (event) { $.getJSON('/flush', { },
@@ -43,6 +55,9 @@
                 </p>
             </dl>
         </form>
+        <form>
+            <a href=# id=flush><button class='btn btn-default'>flush</button></a>
+        </form>
         <!--     <input type="button" id = "flush" value = "Flush" /> -->
         <div class="search_box">
             <form action="" method="POST">
@@ -51,9 +66,17 @@
             </form>
         </div>
 
-        {% if text %}
-            <p>{{text}}</p>
-        {% endif %}
+        <div class="result-box">
+            {% if doc_count != 0 %}
+                {% for rank_num in ranks %}
+                        <ul>
+                            <li>Jumlah kata : </li>
+                            <li>Tingkat Kemiripan : {{array_sim[rank_num-1]}}</li>
+                            <li>First Sentence : {{array_first_sentence[rank_num-1]}}</li>
+                        </ul>
+                {% endfor %}
+            {% endif %}
+        </div>
     </div>
 
     <footer>
