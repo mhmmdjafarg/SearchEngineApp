@@ -49,6 +49,6 @@ footer {
     background-color: rgb(70, 66, 66);
     text-align: center;
     color: white;
-    position: absolute;
+    position: relative;
     bottom: 0;
 }
