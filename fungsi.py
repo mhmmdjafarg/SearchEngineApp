@@ -166,8 +166,8 @@ def WordData(array_of_string):
     word_list = word_list_total(array_of_array_of_words)
 
     # Untuk debugging, nanti dihapus aja
-    print(array_of_array_of_words)
-    print(word_list)
+    # print(array_of_array_of_words)
+    # print(word_list)
 
     # inisiasi word data
     word_data = [[0 for j in range(len(array_of_array_of_words))]
@@ -214,7 +214,9 @@ def Ranking(word_data):
                 ranks[i] = j
                 j = temp
 
-    return ranks
+        # bulatkan 2 digit
+        array_of_sim = [round(item, 2) for item in array_of_sim]
+    return ranks, array_of_sim
 
 
 def txtToString():
@@ -231,13 +233,23 @@ def txtToString():
 
 
 
-string_array = ["blue cake",
-                "i want blue cake, and he wants cake of blue", "red colored cake"]
+# string_array = ["blue cake",
+#                 "i want blue cake, and he wants cake of blue", "red colored cake"]
 
-word_data = WordData(string_array)
+# string_array = ["i want blue cake, and he wants cake of blue. Someday he wants red with her friends and some friends need cake.", "red colored cake wasn't enough for him. yesterday he bought 100 million cake of blue."]
+# array_first_sentence = [getFirstSentence(string) for string in string_array]
+# print(len(array_first_sentence))
+# print(array_first_sentence)
+# query = ["blue cake for me"]
+# for string in string_array:
+#     query.append(string)
+# print(query)
 
-printdata(word_data)
+# word_data = WordData(query)
+# print(len(word_data))
+# printdata(word_data)
 
-ranks = Ranking(word_data)
+# ranks,array_sim = Ranking(word_data)
 
-print(ranks)
+# print(array_sim)
+# print(ranks)
