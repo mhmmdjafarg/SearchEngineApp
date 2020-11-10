@@ -3,7 +3,7 @@ from flask import Flask, session, request, redirect, render_template, flash
 from nltk.util import pr
 from werkzeug.utils import secure_filename
 import shutil
-from fungsi import WordData, getFirstSentence, txtToString, Ranking
+from fungsi import ProcessString, WordData, getFirstSentence, txtToString, Ranking
 
 app = Flask(__name__)
 app.secret_key = "tubesalgeo" #random secret key, can be anything
@@ -49,10 +49,12 @@ def home():
             filtered_text.append(string)
 
         # array of filtered text
+        word_list = ProcessString(session['query'])
         word_data = WordData(filtered_text)
         #array of rank
         ranks, array_sim = Ranking(word_data)
-        return render_template('home.html', ranks = ranks, word_data = word_data, array_first_sentence = array_first_sentence, doc_count = len(array_first_sentence), array_sim = array_sim)
+        
+        return render_template('home.html', query = session['query'],ranks = ranks, word_data = word_data, array_first_sentence = array_first_sentence, doc_count = len(array_first_sentence), array_sim = array_sim, word_list=word_list, jumlah_query = len(word_list))
     return render_template('home.html')
 
 @app.route('/upload', methods=['POST' , 'GET'])
