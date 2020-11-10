@@ -68,13 +68,14 @@
 
         <div class="result-box">
             {% if doc_count != 0 %}
-                {% for rank_num in ranks %}
-                        <ul>
-                            <li>Jumlah kata : </li>
-                            <li>Tingkat Kemiripan : {{array_sim[rank_num-1]}}</li>
-                            <li>First Sentence : {{array_first_sentence[rank_num-1]}}</li>
-                        </ul>
-                {% endfor %}
+            {% for rank_num in ranks %}
+            <ol>{{loop.index}}. Judul Dokumen : </ol>
+                <ul>
+                    <li>Total words : </li>
+                    <li>Similiarity : {{array_sim[loop.index - 1]}}</li>
+                    <li>First Sentence : {{array_first_sentence[rank_num-1]}}</li>
+                </ul>
+            {% endfor %}
             {% endif %}
         </div>
     </div>
