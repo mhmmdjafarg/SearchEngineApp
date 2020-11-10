@@ -3,6 +3,7 @@ import os
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import SnowballStemmer
+from nltk.util import pr
 
 # pip install nltk
 # nltk.download('punkt')
@@ -236,20 +237,28 @@ def txtToString():
 # string_array = ["blue cake",
 #                 "i want blue cake, and he wants cake of blue", "red colored cake"]
 
-# string_array = ["i want blue cake, and he wants cake of blue. Someday he wants red with her friends and some friends need cake.", "red colored cake wasn't enough for him. yesterday he bought 100 million cake of blue."]
+string_array = ["i want blue cake, and he wants cake of blue. Someday he wants red with her friends and some friends need cake.", "red colored cake wasn't enough for him. yesterday he bought 100 million cake of blue."]
 # array_first_sentence = [getFirstSentence(string) for string in string_array]
-# print(len(array_first_sentence))
-# print(array_first_sentence)
-# query = ["blue cake for me"]
-# for string in string_array:
-#     query.append(string)
-# print(query)
+query = ["blue cake for me"]
+for string in string_array:
+    query.append(string)
+
+
 
 # word_data = WordData(query)
-# print(len(word_data))
-# printdata(word_data)
 
+# print(len(word_data))
+# for item in word_data:
+#     print(item)
+#     for data in item:
+#         print(data)
 # ranks,array_sim = Ranking(word_data)
 
 # print(array_sim)
 # print(ranks)
+# query = "blue cake for me"
+
+# query = ProcessString(query)
+
+# for item in query:
+#     print(item)

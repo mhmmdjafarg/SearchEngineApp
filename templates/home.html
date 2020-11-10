@@ -36,48 +36,74 @@
         <div class="header">
             <h1>Search Engine</h1>
         </div>
-        <p>
-            {% with messages = get_flashed_messages() %}
-            {% if messages %}
-        <ul class=flashes>
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-        {% endwith %}
-        </p>
-        <form method="post" action="/upload" enctype="multipart/form-data">
-            <dl>
-                <p>
-                    <input type="file" name="files[]" multiple="true" autocomplete="off" required>
-                    <input type="submit" value="Upload">
-                </p>
-            </dl>
-        </form>
-        <form>
-            <a href=# id=flush><button class='btn btn-default'>flush</button></a>
-        </form>
-        <!--     <input type="button" id = "flush" value = "Flush" /> -->
-        <div class="search_box">
+
+        <div class="input-component card">
+            <p>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+            <ul class=flashes>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+            </p>
+            <form method="post" action="/upload" enctype="multipart/form-data">
+                <dl>
+                    <p>
+                        <input type="file" name="files[]" multiple="true" autocomplete="off" required>
+                        <input class="button" type="submit" value="Upload">
+                    </p>
+                </dl>
+            </form>
+            <form>
+                <a href=# id=flush><button class='btn btn-default'>flush</button></a>
+            </form>
+
+            <!--     <input type="button" id = "flush" value = "Flush" /> -->
             <form action="" method="POST">
                 <input class="search" type="text" name="search" , placeholder="Search here ...">
                 <input class="button" type="submit">
             </form>
         </div>
 
-        <div class="result-box">
-            {% if doc_count != 0 %}
+        {% if doc_count %}
+        <div class="result-box card">
+
+            <h4>Search result for : {{query}}</h4>
             {% for rank_num in ranks %}
-            <ol>{{loop.index}}. Judul Dokumen : </ol>
-                <ul>
-                    <li>Total words : </li>
-                    <li>Similiarity : {{array_sim[loop.index - 1]}}</li>
-                    <li>First Sentence : {{array_first_sentence[rank_num-1]}}</li>
-                </ul>
+            <ol>{{loop.index}}. Document Title : </ol>
+            <ul>
+                <li>Total words : </li>
+                <li>Similiarity : {{array_sim[loop.index - 1]}}</li>
+                <li>First Sentence : {{array_first_sentence[rank_num-1]}}</li>
+            </ul>
             {% endfor %}
-            {% endif %}
+
         </div>
+
+        <div class="result-table card">
+            <table class="center">
+                <tr>
+                    <th>Term</th>
+                    <th>Query</th>
+                    {% for i in range(doc_count) %}
+                    <th>Docs {{i+1}}</th>
+                    {% endfor %}
+                </tr>
+                {% for i in range (jumlah_query) %}
+                <tr>
+                    <td>{{word_list[i]}}</td>
+                    {% for j in range (doc_count+1) %}
+                    <td>{{word_data[i][j]}}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
+            <caption>Similiarity Table</caption>
+        </div>
+        {% endif %}
     </div>
 
     <footer>
