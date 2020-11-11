@@ -192,31 +192,34 @@ def Ranking(word_data):
 
     # inisiasi array of similarity dan ranks
     # len dikurang 1 karena tidak termasuk query
-    ranks = [0 for i in range(len(word_data[0])-1)]
-    array_of_sim = [0 for i in range(len(word_data[0])-1)]
+    ranks = [i for i in range(1,len(word_data[0]))]
+    array_of_sim = [0.00 for i in range(len(word_data[0])-1)]
 
     # setiap dokumen akan dibentuk word_vektor diperoleh dari word_data
     # dan akan dicari sim(query,word_vektor)
-    for j in range(1, len(word_data[0])):
-        word_vektor = [word_data[word][j] for word in range(len(word_data))]
-        sim = similarity(query, word_vektor)
-        
-        # setelah didapatkan sim akan dimasukkan ke array of sim
-        # dan indeks dari dokumen, yaitu j akan dimasukkan pada ranks.
-        # keduanya dimasukkan pada array masing-masing 
-        # secara terurut membesar berdasarkan sim
-        for i in range(j):
-            if sim >= array_of_sim[i]:
-                temp = array_of_sim[i]
-                array_of_sim[i] = sim
-                sim = temp
+    if (panjang(query) != 0) :
+        for j in range(1, len(word_data[0])):
+            word_vektor = [word_data[word][j] for word in range(len(word_data))]
+            if panjang(word_vektor) != 0 :    
+                sim = similarity(query, word_vektor)
+            else :
+                sim = 0.00
+            # setelah didapatkan sim akan dimasukkan ke array of sim
+            # dan indeks dari dokumen, yaitu j akan dimasukkan pada ranks.
+            # keduanya dimasukkan pada array masing-masing 
+            # secara terurut membesar berdasarkan sim
+            for i in range(j):
+                if sim >= array_of_sim[i]:
+                    temp = array_of_sim[i]
+                    array_of_sim[i] = sim
+                    sim = temp
 
-                temp = ranks[i]
-                ranks[i] = j
-                j = temp
+                    temp = ranks[i]
+                    ranks[i] = j
+                    j = temp
 
-        # bulatkan 2 digit
-        array_of_sim = [round(item, 2) for item in array_of_sim]
+            # bulatkan 2 digit
+            array_of_sim = [round(item, 2) for item in array_of_sim]
     return ranks, array_of_sim
 
 
