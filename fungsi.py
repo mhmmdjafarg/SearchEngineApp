@@ -228,23 +228,35 @@ def txtToString():
     if os.path.isdir(path):
         listFile = os.listdir(path) #kebentuk array ada nama2 file di uploads
         arrayStringSemua = []
-        for i in listFile:
-            fileDirectory = os.path.join(path , i)
-            f = open(fileDirectory , 'r')
-            arrayStringSemua.append(f.read())
-            f.close()
+        if (len(listFile) != 0):
+            for i in listFile:
+                fileDirectory = os.path.join(path , i)
+                f = open(fileDirectory , 'r')
+                arrayStringSemua.append(f.read())
+                f.close()
         return arrayStringSemua
+# def txtToString():
+#     path = os.path.join(os.getcwd() , 'uploads')
+#     if os.path.isdir(path):
+#         listFile = os.listdir(path) #kebentuk array ada nama2 file di uploads
+#         arrayStringSemua = []
+#         for i in listFile:
+#             fileDirectory = os.path.join(path , i)
+#             f = open(fileDirectory , 'r')
+#             arrayStringSemua.append(f.read())
+#             f.close()
+#         return arrayStringSemua
 
 
 
 # string_array = ["blue cake",
 #                 "i want blue cake, and he wants cake of blue", "red colored cake"]
 
-string_array = ["i want blue cake, and he wants cake of blue. Someday he wants red with her friends and some friends need cake.", "red colored cake wasn't enough for him. yesterday he bought 100 million cake of blue."]
-# array_first_sentence = [getFirstSentence(string) for string in string_array]
-query = ["blue cake for me"]
-for string in string_array:
-    query.append(string)
+# string_array = ["i want blue cake, and he wants cake of blue. Someday he wants red with her friends and some friends need cake.", "red colored cake wasn't enough for him. yesterday he bought 100 million cake of blue."]
+# # array_first_sentence = [getFirstSentence(string) for string in string_array]
+# query = ["blue cake for me"]
+# for string in string_array:
+#     query.append(string)
 
 
 

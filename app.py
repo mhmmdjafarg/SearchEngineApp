@@ -85,5 +85,15 @@ def flush():
         session.pop('listfile' , None)
     return ("nothing")
 
+@app.route('/result/<filename>')
+def openFile(filename):
+    if ('listfile' in session):
+        text = txtToString()
+        for i in range(len(session['listfile'])):
+            if (filename == session['listfile'][i]):
+                return render_template('result.html' , resultText = text[i] , filename = filename)
+    else:
+        abort(404)
+
 if __name__ == '__main__':
   app.run(debug = True)
