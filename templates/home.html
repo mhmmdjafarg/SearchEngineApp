@@ -25,42 +25,61 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
+    <!-- As a link -->
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Search Everything</a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/about">About</a>
+            </li>
+        </ul>
+    </nav>
     <div class="container">
-        <div class="header">
-            <h1>Search Engine</h1>
-        </div>
-
-        <div class="input-component card">
-            <p>
-                {% with messages = get_flashed_messages() %}
-                {% if messages %}
-            <ul class=flashes>
-                {% for message in messages %}
-                <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-            {% endwith %}
-            </p>
-            <form method="post" action="/upload" enctype="multipart/form-data">
-                <dl>
+        <div class="input-class card">
+            <div class="row">
+                <div class="col-sm-5">
                     <p>
-                        <input type="file" name="files[]" multiple="true" autocomplete="off" required>
-                        <input class="button" type="submit" value="Upload">
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                    <ul class=flashes>
+                        {% for message in messages %}
+                        <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    {% endwith %}
                     </p>
-                </dl>
-            </form>
-            <form>
-                <a href=# id=flush><button>Flush</button></a>
-            </form>
+                    <form method="post" action="/upload" enctype="multipart/form-data">
+                        <dl>
+                            <p>
+                                <input type="file" name="files[]" multiple="true" autocomplete="off" required>
+                                <input class="button" type="submit" value="Upload">
+                            </p>
+                        </dl>
+                    </form>
+                </div>
 
-            <form action="" method="POST">
-                <input class="search" type="text" name="search" , placeholder="Search here ...">
-                <input class="button" type="submit">
-            </form>
+                <div class="col-sm-5">
+                    <form action="" method="POST">
+                        <input class="search" type="text" name="search" , placeholder="Type query here ...">
+                        <input class="button" type="submit" value="Go Search">
+                    </form>
+                </div>
+                
+                <div class="col-sm-2">
+                    <form>
+                        <a href=# id=flush><button class="button">Flush</button></a>
+                    </form>
+                </div>
+
+
+            </div>
         </div>
 
         {% if doc_count %}
@@ -68,7 +87,8 @@
 
             <h4>Search result for : {{query}}</h4>
             {% for rank_num in ranks %}
-            <ol>{{loop.index}}. Document Title : <a href = "/result/{{session['listfile'][rank_num-1]}}" >{{session['listfile'][rank_num-1]}}</a></ol>
+            <ol>{{loop.index}}. Document Title : <a
+                    href="/result/{{session['listfile'][rank_num-1]}}">{{session['listfile'][rank_num-1]}}</a></ol>
             <ul>
                 <li>Total words : </li>
                 <li>Similiarity : {{array_sim[loop.index - 1]}}</li>
@@ -78,26 +98,31 @@
 
         </div>
 
-        <div class="result-table card">
-            <table class="center">
-                <tr>
-                    <th>Term</th>
-                    <th>Query</th>
-                    {% for i in range(doc_count) %}
-                    <th>Docs {{i+1}}</th>
+        <div class="table-responsive card">
+            <table class="table table-striped table-light table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Term</th>
+                        <th>Query</th>
+                        {% for i in range(doc_count) %}
+                        <th>Docs {{i+1}}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in range (jumlah_query) %}
+                    <tr>
+                        <td>{{word_list[i]}}</td>
+                        {% for j in range (doc_count+1) %}
+                        <td>{{word_data[i][j]}}</td>
+                        {% endfor %}
+                    </tr>
                     {% endfor %}
-                </tr>
-                {% for i in range (jumlah_query) %}
-                <tr>
-                    <td>{{word_list[i]}}</td>
-                    {% for j in range (doc_count+1) %}
-                    <td>{{word_data[i][j]}}</td>
-                    {% endfor %}
-                </tr>
-                {% endfor %}
+                </tbody>
             </table>
             <caption>Similiarity Table</caption>
         </div>
+
         {% endif %}
     </div>
 
