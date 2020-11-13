@@ -1,31 +1,13 @@
 <html lang="en">
 
 <head>
-    <script type="text/javascript" src="{{ url_for('static', filename = 'flush.js') }}"></script>
+    <title>Search Everything</title>
+    <script type = "text/javascript" src = "{{ url_for('static', filename = 'flush.js') }}"></script>
     <meta charset="UTF-8">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <!--     <script type=text/javascript>
-            $(function() {
-              $('a#flush').bind('click', function() {
-                $.getJSON('/flush',
-                    function(data) {
-                  //do nothing
-                });
-                return false;
-              });
-            });
-    </script> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 
-    <!-- Font Awesome -->
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"> -->
-    <!-- Google Fonts -->
-    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"> -->
-    <!-- Bootstrap core CSS -->
-    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"> -->
-    <!-- Material Design Bootstrap -->
-    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet"> -->
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -53,10 +35,12 @@
             {% if messages %}
         <div class=flashes>
             {% for message in messages %}
-            {% if message != "The file(s) have been deleted"%}
-            <p class="alert alert-success">{{ message }}</p>
+            {% if message == "The file(s) have been deleted"%}
+                <p class = "alert alert-info">{{ message }}</p>
+            {% elif message == "There are no files uploaded yet"%}
+                <p class = "alert alert-warning">{{ message }}</p>
             {% else %}
-            <p class="alert alert-info">{{ message }}</p>
+                <p class = "alert alert-success">{{ message }}</p>
             {% endif %}
             {% endfor %}
         </div>
@@ -77,15 +61,15 @@
                 </div>
 
                 <div class="col-sm-5">
-                    <form action="" method="POST">
+                    <form action="" method="post">
                         <input class="search" type="text" name="search" , placeholder="Type query here ..." required>
                         <input class="button" type="submit" value="Go Search">
                     </form>
                 </div>
 
                 <div class="col-sm-2">
-                    <form action="/flush" method="post">
-                        <button name="flush" onclick="flush()" type="submit" class="button">Reset</button>
+                    <form action = "/flush" method = "post">
+                        <button name = "flush" type = "submit" class="button">Reset</button>
                     </form>
                 </div>
             </div>

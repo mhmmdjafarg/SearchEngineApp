@@ -91,6 +91,8 @@ def flush():
             os.remove(os.path.join(UPLOAD_FOLDER,i))
         session.pop('listfile' , None)
         flash("The file(s) have been deleted")
+    else:
+        flash("There are no files uploaded yet")
     return redirect('/')
 
 @app.route('/result/<filename>')
