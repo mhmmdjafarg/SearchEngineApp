@@ -47,10 +47,12 @@
             {% if messages %}
         <div class=flashes>
             {% for message in messages %}
-            {% if message != "The file(s) have been deleted"%}
-                <p class = "alert alert-success">{{ message }}</p>
-            {% else %}
+            {% if message == "The file(s) have been deleted"%}
                 <p class = "alert alert-info">{{ message }}</p>
+            {% elif message == "There are no files uploaded yet"%}
+                <p class = "alert alert-warning">{{ message }}</p>
+            {% else %}
+                <p class = "alert alert-success">{{ message }}</p>
             {% endif %}
             {% endfor %}
         </div>
@@ -71,7 +73,7 @@
                 </div>
 
                 <div class="col-sm-5">
-                    <form action="" method="POST">
+                    <form action="" method="post">
                         <input class="search" type="text" name="search" , placeholder="Type query here ..." required>
                         <input class="button" type="submit" value="Go Search">
                     </form>
@@ -80,7 +82,7 @@
                 <div class="col-sm-2">
                     <form action = "/flush" method = "post">
                         <!-- <a href='#' id=flush><button onclick = "flush()" class="button">Reset</button></a> -->
-                        <button name = "flush" onclick = "flush()" type = "submit" class="button">Reset</button>
+                        <button name = "flush" type = "submit" class="button">Reset</button>
                     </form>
                 </div>
 
