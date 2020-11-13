@@ -42,20 +42,20 @@
         </ul>
     </nav>
     <div class="container">
+        <p>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+        <ul class=flashes>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        </p>
         <div class="input-class card">
             <div class="row">
                 <div class="col-sm-5">
-                    <p>
-                        {% with messages = get_flashed_messages() %}
-                        {% if messages %}
-                    <ul class=flashes>
-                        {% for message in messages %}
-                        <li>{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
-                    {% endwith %}
-                    </p>
                     <form method="post" action="/upload" enctype="multipart/form-data">
                         <dl>
                             <p>
