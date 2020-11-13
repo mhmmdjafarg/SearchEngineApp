@@ -52,11 +52,12 @@ form {
 .button:hover {
     background-color: #ffffff;
     color: #03070a;
-    cursor: grab;
+    cursor:pointer;
 }
 
 .result-box {
     width: 100%;
+    justify-content: left;
 }
 
 .card {
@@ -87,3 +88,11 @@ footer {
     position: relative;
     bottom: 0;
 }
+
+
+@media only screen and (max-width:800px) {
+    .row{
+        display: flex;
+        flex-direction: column;
+    }
+  }
