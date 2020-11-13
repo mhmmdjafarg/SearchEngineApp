@@ -1,11 +1,12 @@
 <html lang="en">
 
 <head>
+    <script type = "text/javascript" src = "{{ url_for('static', filename = 'flush.js') }}"></script>
     <meta charset="UTF-8">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type=text/javascript>
             $(function() {
-              $('a#flush').bind('click', function() {
+              $('a/flush').bind('click', function() {
                 $.getJSON('/flush',
                     function(data) {
                   //do nothing
@@ -74,7 +75,7 @@
                 
                 <div class="col-sm-2">
                     <form>
-                        <a href=# id=flush><button class="button">Reset</button></a>
+                        <a href='/' id=flush><button onclick = "flush()" class="button">Reset</button></a>
                     </form>
                 </div>
 
