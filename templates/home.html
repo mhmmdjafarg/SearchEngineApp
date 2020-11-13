@@ -4,7 +4,7 @@
     <script type = "text/javascript" src = "{{ url_for('static', filename = 'flush.js') }}"></script>
     <meta charset="UTF-8">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type=text/javascript>
+<!--     <script type=text/javascript>
             $(function() {
               $('a#flush').bind('click', function() {
                 $.getJSON('/flush',
@@ -14,7 +14,7 @@
                 return false;
               });
             });
-    </script>
+    </script> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 
@@ -47,7 +47,11 @@
             {% if messages %}
         <div class=flashes>
             {% for message in messages %}
-            <p class = "alert alert-success">{{ message }}</p>
+            {% if message != "The file(s) have been deleted"%}
+                <p class = "alert alert-success">{{ message }}</p>
+            {% else %}
+                <p class = "alert alert-info">{{ message }}</p>
+            {% endif %}
             {% endfor %}
         </div>
         {% endif %}
@@ -74,8 +78,9 @@
                 </div>
                 
                 <div class="col-sm-2">
-                    <form>
-                        <a href='#' id=flush><button onclick = "flush()" class="button">Reset</button></a>
+                    <form action = "/flush" method = "post">
+                        <!-- <a href='#' id=flush><button onclick = "flush()" class="button">Reset</button></a> -->
+                        <button name = "flush" onclick = "flush()" type = "submit" class="button">Reset</button>
                     </form>
                 </div>
 

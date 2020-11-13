@@ -1,3 +1,3 @@
 function flush() {
-    alert("Clear and Clean!")
+    alert("Are you sure you want to delete the uploaded file(s)?")
  }

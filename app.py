@@ -84,13 +84,14 @@ def upload_file():
         flash('File(s) successfully uploaded')
         return redirect('/')
 
-@app.route('/flush')
+@app.route('/flush' , methods = ['POST'])
 def flush():
     if ('listfile' in session):
         for i in session['listfile']:
             os.remove(os.path.join(UPLOAD_FOLDER,i))
         session.pop('listfile' , None)
-    return ("nothing")
+        flash("The file(s) have been deleted")
+    return render_template("home.html")
 
 @app.route('/result/<filename>')
 def openFile(filename):
