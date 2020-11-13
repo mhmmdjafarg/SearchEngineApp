@@ -81,7 +81,7 @@
             <h4>Search result for : {{query}}</h4>
             {% for rank_num in ranks %}
             <ol>{{loop.index}}. Document Title : <a
-                    href="/result/{{session['listfile'][rank_num-1]}}">{{session['listfile'][rank_num-1]}}</a></ol>
+                    href="/result/{{session['listfile'][rank_num-1]}}">{{session['listfile'][rank_num-1].replace('_' , ' ').replace('.txt' , '')}}</a></ol>
             <ul>
                 <li>Total words : {{array_jumlah_kata[rank_num - 1]}}</li>
                 <li>Similiarity : {{array_sim[loop.index - 1]}}</li>

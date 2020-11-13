@@ -1,0 +1,31 @@
+Pfizer released surprisingly positive data about its experimental coronavirus vaccine this week and may hope to apply for regulatory approval by the end of the month, but it will take several weeks more to get a vaccine through the approval process, experts noted.
+
+Americans should not be hoping for any authorization from the US Food and Drug Administration before the last half of December, experts agreed.
+That's because Pfizer, which appears to be the first company to be getting its vaccine trial data to the finish line, could not possibly get it together before the end of next week, which is already the end of November. After that, weeks of FDA review remain.
+Dr. Larry Corey of the University of Washington and the Fred Hutchinson Cancer Research Center, who is leading the coronavirus vaccine trials network in the United States, told CNN he thinks it will take about 10 days for the FDA to review Pfizer's clinical trial data. The agency also needs to review Pfizer's manufacturing data to make sure the facilities where the vaccine is being made are up to standard.
+"I'm not sure how long that review will take, but it could be two weeks. I think that's reasonable," Corey said.
+Then the FDA has committed to seeking input from the Vaccines and Related Biological Products Advisory Committee (VRBPAC), an advisory group that guides the FDA on vaccines.
+Dr. Paul Offit, a member of the committee and director of the Vaccine Education Center at Children's Hospital of Philadelphia, agreed on the December time line.
+"Then they'll have to seek the opinion of the advisory committee, which presumably would be some time early in December, I would guess," said Offit.
+The FDA has to publicly schedule any VRBPAC meeting 15 days in advance, so that could slow things a little.
+It's easy to be confused about what to expect, with Operation Warp Speed officials promising to have trucks rolling within a day of an FDA emergency use authorization (EUA). Plus, companies have all been manufacturing doses even as they test the vaccines, with tens of millions already promised for immediate delivery.
+"We want shots in arms within 24 hours," US Health and Human Services deputy chief of staff Paul Mango told reporters in October.
+Not so fast
+But Pfizer's report on Monday -- that it's vaccine was more than 90% effective -- was preliminary data. It wasn't the information the company needs to send to the FDA to seek an EUA.
+The FDA has said it wants companies to wait for two weeks after about half their volunteers have received a second dose of vaccine before they apply for that emergency authorization -- and the doctors running the clinical trials will have needed to tally about 100 more validated cases of coronavirus infection to meet the company's goals for showing the vaccine actually works.
+"They're about a week and a half from that," Dr. Anthony Fauci, director of the National Institute of Allergy and Infectious Diseases, told CNN on Monday.
+Even Alex Azar, the secretary of the US Department of Health and Human Services, has said the process of getting FDA authorization will take several weeks.
+Dr. Peter Marks, who as head of the FDA's Center for Biologics Evaluation and Research leads vaccine decision-making, has said the agency will move swiftly but will not cut corners. It will use the EUA process, rather than full approval -- but that doesn't mean an overnight approval.
+Pfizer has sped up collection of that clinical data, said Dr. Robert Frenck, director of the Vaccine Research Center at Cincinnati Children's Hospital, who is running one of the clinical trials of the Pfizer vaccine.
+"If you look at a more typical vaccine trial you'd be sending things in batches," Frenck told CNN Thursday. That's usually a leisurely process that takes weeks, he said.
+But because this is a pandemic, Frenck said his team is sending Pfizer its data every day. "For this study they are saying they need information back in 24 hours," he said. "We are cutting out the lag time. Because this is an emergency, we are getting people to work as hard as we can," Frenck said.
+Pfizer must collect and review the data and determine whether more people who got placebos were infected than those who got the actual vaccine. That information then goes to the FDA for consideration.
+"The data has to be reviewed and confirmed by FDA," said Dr. Peter Hotez, dean for the National School of Tropical Medicine at Baylor College of Medicine. "Sometimes they pick up things the company might miss," he added.
+That will include details of whether people who got the vaccine and still became infected had an immune response to the vaccine at all, whether particular groups such as older people were less likely to be protected and other important clues about how the vaccine worked, Offit said.
+Corey pointed out that it took more than four weeks for the FDA to consider an application by Eli Lilly and Co., for its monoclonal antibody therapy. Lilly applied to the FDA for emergency use authorization on October 7 and received it on November 9.
+"You can look at that timing as a marker," Corey said. "There's a lot of data to review."
+The FDA will take into account any recommendations from VRBPAC. At the same time, the Centers for Disease Control and Prevention's Advisory Committee on Immunization Practices (ACIP) will be meeting. FDA gives the authorization for a vaccine, while ACIP decides who gets it and when.
+Offit said he assumes the two processes will happen at the same time.
+"I would guess we would be seeing this in the first half of December and the vaccine could, in theory, be rolling off the shelves by end of December," Offit said.
+There's not yet an official federal government playbook for who gets vaccinated first, but the National Academies of Sciences, Engineering and Medicine, as well as CDC, have recommended that frontline health care workers, emergency workers and the most vulnerable who are also most likely to be infected get the first vaccines.
+Companies and the federal government have said it would be spring at the very soonest before the general public could expect to get coronavirus vaccines.

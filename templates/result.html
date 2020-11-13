@@ -2,14 +2,8 @@
 <html>
 
 <head>
-	<script>
-		function goBack() {
-			window.history.back();
-		}
-	</script>
-
 	<title>
-		{{filename}}
+		{{filename.replace('_' , ' ').replace('.txt' , '')}}
 	</title>
 
 	<style>
@@ -40,7 +34,7 @@
 </head>
 
 <body>
-	<h1>{{filename}}</h1>
+	<h1>{{filename.replace('_' , ' ').replace('.txt' , '')}}</h1>
 	<p>
 		{{resultText}}
 	</p>
