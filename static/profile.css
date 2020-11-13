@@ -5,6 +5,8 @@
     font-family: 'Poppins', sans-serif;
 }
 
+
+
 nav{
     top: 0;
     height: 60px;
@@ -12,12 +14,51 @@ nav{
     font-family: 'Poppins', sans-serif;
 }
 
+main {
+    padding: 20px;
+    overflow: auto;
+    margin: 0 10px;
+}
+
+.concept {
+    text-align: justify;
+    padding: 20px 50px;
+    margin: 10px auto;
+}
+
+.concept h1{
+    font-size: 20px;
+    text-transform: uppercase;
+    display: block;
+    border-bottom: 4px solid;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.concept h2{
+    font-size: 15px;
+    text-transform: uppercase;
+    display: block;
+    padding-bottom: 10px;
+}
+
+.featured-image {
+    width: 800px;
+    max-height: 300px;
+    object-fit: cover;
+    object-position: center;
+ }
+
+#rumus {
+    width: 300px;
+    max-height: 300px;
+    object-fit: cover;
+    object-position: center;
+ }
+
 
 footer {
     font-family: 'Poppins', sans-serif;
-    /* width: 100%; */
-    /* height: 80px;
-    line-height: 60px; */
     font-weight: bold;
     padding: 12px;
     background-color: rgb(52,58,64);
@@ -25,3 +66,64 @@ footer {
     color: white;
     position: relative;
 }
+
+.team-section{
+    background: #f1f1f1;
+    text-align: center;
+}
+
+.inner-width{
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px;
+    color: #333;
+    overflow: hidden;
+}
+
+.team-section h1{
+    font-size: 20px;
+    text-transform: uppercase;
+    display: block;
+    border-bottom: 4px solid;
+    padding-bottom: 10px;
+}
+
+.pe{
+    float: left;
+    width: calc(100% / 3);
+    overflow: hidden;
+    padding: 40px 0;
+    transition: 0.4s;
+}
+
+.pe:hover{
+    background: #ddd;
+}
+
+.pe img{
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.p-name{
+    margin: 16px 0;
+    text-transform: uppercase;
+}
+
+.p-des{
+    font-style: italic;
+    color: #3498db;
+}
+
+@media screen and (max-width:600px){
+    .pe{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .featured-image{
+        width: 300px;
+    }
+ }

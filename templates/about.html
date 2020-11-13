@@ -30,36 +30,91 @@
     </nav>
 
     <main>
-        <div id="content">
-            
-            <div class="concept">
-                <h2>Konsep Mesin Pencarian</h2>
-                <p>
-        Mesin pencarian adalah website yang mengumpulkan dan mengorganisir konten dari seluruh bagian dari internet. Mesin pencarian merupakan cara untuk temu balik informasi.
-        Temu-balik informasi (information retrieval) adalah menemukan kembali (retrieval) informasi yang relevan terhadap kebutuhan pengguna dari suatu kumpulan informasi secara otomatis.
-        Mesin pencarian ini memodelkan query dan term sebagai model ruang vektor. Dan kemudian me-ranking mana yang paling dekat kemiripannya dengan query.</p><br>
+        <div class="concept">
+            <h1>Konsep Mesin Pencarian</h1>
+            <p>
+                Mesin pencarian adalah website yang mengumpulkan dan mengorganisir konten dari seluruh bagian dari
+                internet. Mesin pencarian merupakan cara untuk temu balik informasi.
+                Temu-balik informasi (information retrieval) adalah menemukan kembali (retrieval) informasi yang
+                relevan terhadap kebutuhan pengguna dari suatu kumpulan informasi secara otomatis.
+                Mesin pencarian ini memodelkan query dan term sebagai model ruang vektor. Dan kemudian pengurutan
+                berdasarkan
+                tingkat kemiripannya dengan query.</p>
 
-        <p>Pada website ini, pengguna bisa mencari kemiripan dari file-file berekstensi .txt dan kemudian memasukkan kata sebagai querynya. Term didapat dari setiap kata unik dari query.</p>
-                <ol>Langkah untuk memodelkan query dan term menjadi vektor sebagai berikut :
-                    <li>Lakukan stemming setiap kata pada query ataupun textfile</li>
-                </ol>
+            <p>Pada website ini, pengguna bisa mencari kemiripan dari file-file berekstensi .txt dan kemudian
+                memasukkan kata sebagai querynya. Term didapat dari setiap kata unik dari query.</p>
+            <ol>Langkah untuk memodelkan query dan term menjadi vektor sebagai berikut :
+                <li>Lakukan stemming setiap kata pada query ataupun textfile</li>
+                <li>Lakukan pendataan kata unik untuk seluruh kata (baik query maupun file)</li>
+                <li>Buatlah sebagai tabel frekuensi kemunculannya untuk masing-masing query maupun file, selanjutnya
+                    akan disebut sebagai similiarity table</li>
+            </ol>
+            <img src="{{url_for('static',filename = 'simitable.png')}}" alt="Contoh similiarity table"
+                class="featured-image">
 
-            </div>
+            <p>Pada contoh, query dari user adalah <b>blue cake</b> dan file dari <b>1.txt 2.txt dan 3.txt</b> hanya
+                berisi 2 kata tersebut. Didapatkan similiarity table seperti diatas yang dapat diperlakukan sebagai
+                vektor. </p>
 
-            <div class="how-to-use">
-                <h2>Cara Menggunakan</h2>
+            <ul> Pada gambar representasi vektor-vektornya sebagai berikut :
+                <li>Query : (1i + 1j)</li>
+                <li>1.txt : (2i + 3j)</li>
+                <li>2.txt : (1i + 2j)</li>
+                <li>3.txt : (0i + 1j)</li>
+            </ul>
 
-                <ul>
+            <p> kemudian
+                dilakukan perankingan menggunakan <a href="https://en.wikipedia.org/wiki/Cosine_similarity">cosine
+                    similiarity</a>.
+            </p>
+            <img src="{{url_for('static',filename = 'rumus.png')}}" alt="rumus cosine similiarity" id="rumus">
+            <p> Untuk melihat similiarity dari setiap file .txt, gunakan rumus cosine similiarity dengan
+                <b><i>A</i></b> sebagai Query dan <b><i>B</i></b> sebagai file yang dicari similiarity-nya.</p>
+        </div>
 
-                </ul>
-            </div>
-
-
-            <div class="author">
-                <h2>Author</h2>
-
+        <div class="concept" id="how-to">
+            <h1>Cara Menggunakan</h1>
+            <div class="petunjuk">
+                <div class="step">
+                    <h2>Upload file </h2>
+                    <p>Pengguna memasukkan file yang akan dicari similiaritynya. File berekstensi .txt</p>
+                </div>
+                <div class="step">
+                    <h2>Type query</h2>
+                    <p>Pengguna memasukkan file yang akan dicari similiaritynya. File berekstensi .txt</p>
+                </div>
+                <div class="step">
+                    <h2>Reset file</h2>
+                    <p>Pengguna memasukkan file yang akan dicari similiaritynya. File berekstensi .txt</p>
+                </div>
             </div>
         </div>
+
+
+        <div class="team-section">
+            <div class="inner-width">
+                <h1>Meet Our Team</h1>
+                <div class="pers">
+                    <div class="pe">
+                        <img src="{{url_for('static',filename = '1.jpg')}}" ">
+                        <div class=" p-name">1 Jafar</div>
+                    <div class="p-des">Fullstack</div>
+                </div>
+                <div class="pe">
+                    <img src="{{url_for('static',filename = '2.jpg')}}" ">
+                        <div class=" p-name">2 Jafar</div>
+                <div class="p-des">Fullstack</div>
+            </div>
+            <div class="pe">
+                <img src="{{url_for('static',filename = '3.jpg')}}" ">
+                        <div class=" p-name">3 jafar</div>
+            <div class="p-des">Fullstack</div>
+        </div>
+        </div>
+        </div>
+
+        </div>
+
     </main>
 
     <footer>
