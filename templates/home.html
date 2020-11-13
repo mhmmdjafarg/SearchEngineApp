@@ -1,10 +1,10 @@
 <html lang="en">
 
 <head>
-    <script type = "text/javascript" src = "{{ url_for('static', filename = 'flush.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'flush.js') }}"></script>
     <meta charset="UTF-8">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<!--     <script type=text/javascript>
+    <!--     <script type=text/javascript>
             $(function() {
               $('a#flush').bind('click', function() {
                 $.getJSON('/flush',
@@ -19,16 +19,22 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"> -->
     <!-- Google Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"> -->
     <!-- Bootstrap core CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"> -->
     <!-- Material Design Bootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet"> -->
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!--Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    
+    <title>Search Engine</title>
 </head>
 
 <body>
@@ -48,9 +54,9 @@
         <div class=flashes>
             {% for message in messages %}
             {% if message != "The file(s) have been deleted"%}
-                <p class = "alert alert-success">{{ message }}</p>
+            <p class="alert alert-success">{{ message }}</p>
             {% else %}
-                <p class = "alert alert-info">{{ message }}</p>
+            <p class="alert alert-info">{{ message }}</p>
             {% endif %}
             {% endfor %}
         </div>
@@ -76,20 +82,17 @@
                         <input class="button" type="submit" value="Go Search">
                     </form>
                 </div>
-                
+
                 <div class="col-sm-2">
-                    <form action = "/flush" method = "post">
-                        <!-- <a href='#' id=flush><button onclick = "flush()" class="button">Reset</button></a> -->
-                        <button name = "flush" onclick = "flush()" type = "submit" class="button">Reset</button>
+                    <form action="/flush" method="post">
+                        <button name="flush" onclick="flush()" type="submit" class="button">Reset</button>
                     </form>
                 </div>
-
-
             </div>
         </div>
 
         {% if doc_count %}
-        <div class="result-box card">
+        <div class="card" id="result">
 
             <h4>Search result for : {{query}}</h4>
             {% for rank_num in ranks %}
@@ -98,7 +101,7 @@
             <ul>
                 <li>Total words : {{array_jumlah_kata[rank_num - 1]}}</li>
                 <li>Similiarity : {{array_sim[loop.index - 1]}}</li>
-                <li>First Sentence : {{array_first_sentence[rank_num-1]}}</li>
+                <li>First sentence : {{array_first_sentence[rank_num-1]}}</li>
             </ul>
             {% endfor %}
 
@@ -111,7 +114,8 @@
                         <th>Term</th>
                         <th>Query</th>
                         {% for i in range(doc_count) %}
-                        <th>Docs {{i+1}}</th>
+                        <th>{{session['listfile'][i]}}</th>
+                        <!-- <th>Docs {{i+1}}</th> -->
                         {% endfor %}
                     </tr>
                 </thead>

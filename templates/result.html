@@ -1,20 +1,49 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<script>
-	function goBack() {
-	  window.history.back();
-	}
+		function goBack() {
+			window.history.back();
+		}
 	</script>
 	<title>
 		{{filename}}
 	</title>
+
+	<style>
+		button {
+			position: relative;
+			padding: 6px 15px;
+			left: -8px;
+			border: 2px solid #21528a;
+			background-color: #21528a;
+			color: #fafafa;
+		}
+
+		.button:hover {
+			background-color: #ffffff;
+			color: #03070a;
+			cursor: pointer;
+		}
+
+		body{
+			font-family: 'Poppins', sans-serif;
+			padding: 10px 10px;
+		}
+	</style>
+
+	<!--Font -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
+
 <body>
 	<h1>{{filename}}</h1>
 	<p>
 		{{resultText}}
 	</p>
-	<button onclick="goBack()">Get Back To Search Engine</button>
+	<button class="button" onclick="goBack()">Get Back To Search Engine</button>
 </body>
+
 </html>

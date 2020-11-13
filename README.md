@@ -32,14 +32,14 @@ Langkah pencarian :
 - Siapkan file berekstensi `.txt` yang akan dicari similiarity-nya, gunakan text berbahasa inggris :gb:
 - Upload file yang telah disiapkan, (file tersebut sementara akan disimpan pada directory website pada folder `/uploads`)
 - Pada search bar, ketikkan query yang diinginkan, submit
-- Untuk mencari dengan file lain, tekan tombol `flush` terlebih dahulu untuk menghapus file lama.
+- Untuk mencari dengan file lain, tekan tombol `reset` terlebih dahulu untuk menghapus file lama.
 - Enjoy :thumbsup:
 
 ## Author
 
 [Muhammad Jafar - 13519197](https://github.com/mhmmdjafarg)
 
-[Faris Hasim 13519050](https://github.com/farishasim)
+[Faris Hasim - 13519050](https://github.com/farishasim)
 
 [Randy Zakya - 13519061](https://github.com/rdyzakya)
 
