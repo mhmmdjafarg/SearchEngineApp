@@ -91,7 +91,7 @@
             <ol>{{loop.index}}. Document Title : <a
                     href="/result/{{session['listfile'][rank_num-1]}}">{{session['listfile'][rank_num-1]}}</a></ol>
             <ul>
-                <li>Total words : </li>
+                <li>Total words : {{array_jumlah_kata[rank_num - 1]}}</li>
                 <li>Similiarity : {{array_sim[loop.index - 1]}}</li>
                 <li>First Sentence : {{array_first_sentence[rank_num-1]}}</li>
             </ul>

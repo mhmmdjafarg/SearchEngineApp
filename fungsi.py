@@ -46,6 +46,13 @@ def getFirstSentence(text):
     return firstSentence
 
 
+# mengembalikan banyaknya kata pada dokume yang belum remove stopwords and di-stemming
+def totalWord(text):
+    text = removePunctuantion(text)
+    word_token = word_tokenize(text)
+    return len(word_token)
+
+
 # Menerima input berupa array of string yang 
 # I.S sudah dihilangkan stopword dan punctuationnya
 def stemming(text):
