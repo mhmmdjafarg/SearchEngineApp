@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script>
+	function goBack() {
+	  window.history.back();
+	}
+	</script>
 	<title>
 		{{filename}}
 	</title>
@@ -10,6 +15,6 @@
 	<p>
 		{{resultText}}
 	</p>
-	<a href="/"><button>Get Back To Search Engine</button></a>
+	<button onclick="goBack()">Get Back To Search Engine</button>
 </body>
 </html>
