@@ -1,4 +1,14 @@
 # 🇮🇩 Search Engine App :speech_balloon:
+![halaman pertama Search.txt](/readme-material/homepage.png)
+
+## Daftar isi
+- [Tentang Mesin Pencarian (Search engine) :grey_question:](#tentang-mesin-pencarian--search-engine---grey-question-)
+- [Sebelum memulai](#sebelum-memulai)
+- [Cara Memakai](#cara-memakai)
+- [Author](#author)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 ## Tentang Mesin Pencarian (Search engine) :grey_question:
 Mesin pencarian adalah website yang mengumpulkan dan mengorganisir konten dari seluruh bagian dari internet.
@@ -11,6 +21,9 @@ Mesin pencarian ini memodelkan `query` dan `term` sebagai model ruang vektor. De
 Namun, pada website yang kami buat ini menerima `query` dari pengguna dan me-*ranking* masukan file-file `.txt` oleh pengguna dalam bahasa inggris
 
 ## Sebelum memulai
+
+![installation tutorial](/readme-material/installation.gif)
+
 Pastikan sudah menginstall hal-hal berikut pada perangkat yang digunakan
 - Python terinstall, jika belum dapat mendownload melalui link [berikut](https://www.python.org/downloads/)
 - Python `pip` terinstall
@@ -23,10 +36,15 @@ Pastikan sudah menginstall hal-hal berikut pada perangkat yang digunakan
         - nltk.download('stopwords')
 
 ## Cara Memakai
+
+![Clone and running](/readme-material/clone.gif)
+
 Langkah-langkah Instalasi :
 - Clone repository ini pada terminal : `git clone https://github.com/mhmmdjafarg/SearchEngineApp.git`
 - Buka directory folder website `src`, kemudian jalankan `python app.py`
 - Secara default website akan dijalankan pada `http://127.0.0.1:5000/`
+
+![Clone and running](/readme-material/search.gif)
 
 Langkah pencarian :
 - Siapkan file berekstensi `.txt` yang akan dicari similiarity-nya, gunakan text berbahasa inggris :gb:
