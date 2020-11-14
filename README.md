@@ -2,7 +2,7 @@
 ![halaman pertama Search.txt](/readme-material/homepage.png)
 
 ## Daftar isi
-- [Tentang Mesin Pencarian (Search engine) :grey_question:](#tentang-mesin-pencarian--search-engine---grey-question-)
+- [Tentang Mesin Pencarian (Search engine) :grey_question:](#tentang-mesin-pencarian-search-engine-grey_question)
 - [Sebelum memulai](#sebelum-memulai)
 - [Cara Memakai](#cara-memakai)
 - [Author](#author)
