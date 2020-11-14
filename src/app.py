@@ -31,6 +31,8 @@ def home():
     if(request.method == 'POST'):
         # Siapkan semua string
         session['query'] = request.form['search']
+        if ('listfile' not in session):
+            flash('There are no files uploaded yet, nothing to search')
         text = txtToString()
 
         try:
@@ -92,7 +94,7 @@ def flush():
         session.pop('listfile' , None)
         flash("The file(s) have been deleted")
     else:
-        flash("There are no files uploaded yet")
+        flash("There are no files uploaded yet, nothing to delete")
     return redirect('/')
 
 @app.route('/result/<filename>')
