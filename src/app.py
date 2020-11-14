@@ -29,41 +29,43 @@ def allowed_file(filename):
 @app.route("/", methods = ['POST', 'GET'])
 def home():
     if(request.method == 'POST'):
-        # Siapkan semua string
-        session['query'] = request.form['search']
         if ('listfile' not in session):
             flash('There are no files uploaded yet, nothing to search')
-        text = txtToString()
+        else:
+            # Siapkan semua string
+            session['query'] = request.form['search']
 
-        try:
-            if (len(text) == 0):
+            text = txtToString()
+
+            try:
+                if (len(text) == 0):
+                    return render_template('home.html')
+            except ZeroDivisionError:
                 return render_template('home.html')
-        except ZeroDivisionError:
-            return render_template('home.html')
-        
-        # Simpan first sentece
-        array_first_sentence = [getFirstSentence(string) for string in text]
+            
+            # Simpan first sentece
+            array_first_sentence = [getFirstSentence(string) for string in text]
 
-        # Simpan jumlah kata
-        array_jumlah_kata = [totalWord(string) for string in text]
+            # Simpan jumlah kata
+            array_jumlah_kata = [totalWord(string) for string in text]
 
-        # Pindahkan ke filtered_text
-        filtered_text = []
-        filtered_text.append(session['query'])
-        for string in text:
-            filtered_text.append(string)
+            # Pindahkan ke filtered_text
+            filtered_text = []
+            filtered_text.append(session['query'])
+            for string in text:
+                filtered_text.append(string)
 
-        # array of filtered text
-        word_data = WordData(filtered_text)
+            # array of filtered text
+            word_data = WordData(filtered_text)
 
-        # array of filtered query
-        array_query = ProcessString(session['query'])
-        word_list = []
-        word_list = wordlist(word_list,array_query)
-        # array of rank
-        ranks, array_sim = Ranking(word_data)
-        
-        return render_template('home.html', query = session['query'],ranks = ranks, word_data = word_data, array_first_sentence = array_first_sentence, doc_count = len(array_first_sentence), array_sim = array_sim, word_list=word_list, jumlah_query = len(word_list), array_jumlah_kata=array_jumlah_kata)
+            # array of filtered query
+            array_query = ProcessString(session['query'])
+            word_list = []
+            word_list = wordlist(word_list,array_query)
+            # array of rank
+            ranks, array_sim = Ranking(word_data)
+            
+            return render_template('home.html', query = session['query'],ranks = ranks, word_data = word_data, array_first_sentence = array_first_sentence, doc_count = len(array_first_sentence), array_sim = array_sim, word_list=word_list, jumlah_query = len(word_list), array_jumlah_kata=array_jumlah_kata)
     return render_template('home.html')
 
 @app.route('/upload', methods=['POST' , 'GET'])
