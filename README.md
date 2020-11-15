@@ -37,16 +37,17 @@ Pastikan sudah menginstall hal-hal berikut pada perangkat yang digunakan
 
 ## Cara Memakai
 
+### Langkah-langkah Instalasi :
 ![Clone and running](/readme-material/clone.gif)
 
-Langkah-langkah Instalasi :
 - Clone repository ini pada terminal : `git clone https://github.com/mhmmdjafarg/SearchEngineApp.git`
 - Buka directory folder website `src`, kemudian jalankan `python app.py`
 - Secara default website akan dijalankan pada `http://127.0.0.1:5000/`
 
+
+### Langkah pencarian :
 ![Clone and running](/readme-material/search.gif)
 
-Langkah pencarian :
 - Siapkan file berekstensi `.txt` yang akan dicari similiarity-nya, gunakan text berbahasa inggris :gb:
 - Upload file yang telah disiapkan, (file tersebut sementara akan disimpan pada directory website pada folder `src/uploads`)
 - Pada search bar, ketikkan query yang diinginkan, Go Search
