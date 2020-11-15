@@ -56,7 +56,7 @@ def home():
                 filtered_text.append(string)
 
             # array of filtered text
-            word_data = WordData(filtered_text)
+            word_data, word_list_total = WordData(filtered_text)
 
             # array of filtered query
             array_query = ProcessString(session['query'])
@@ -65,7 +65,7 @@ def home():
             # array of rank
             ranks, array_sim = Ranking(word_data)
             
-            return render_template('home.html', query = session['query'],ranks = ranks, word_data = word_data, array_first_sentence = array_first_sentence, doc_count = len(array_first_sentence), array_sim = array_sim, word_list=word_list, jumlah_query = len(word_list), array_jumlah_kata=array_jumlah_kata)
+            return render_template('home.html', query = session['query'],ranks = ranks, word_data = word_data, array_first_sentence = array_first_sentence, doc_count = len(array_first_sentence), array_sim = array_sim, word_list=word_list, jumlah_query = len(word_list), array_jumlah_kata=array_jumlah_kata, jumlah_word = len(word_data), word_list_total=word_list_total)
     return render_template('home.html')
 
 @app.route('/upload', methods=['POST' , 'GET'])

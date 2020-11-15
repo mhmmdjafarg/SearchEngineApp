@@ -104,9 +104,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for i in range (jumlah_query) %}
+                    {% for i in range (jumlah_word) %}
                     <tr>
-                        <td>{{word_list[i]}}</td>
+                        <td>{{word_list_total[i]}}</td>
                         {% for j in range (doc_count+1) %}
                         <td>{{word_data[i][j]}}</td>
                         {% endfor %}

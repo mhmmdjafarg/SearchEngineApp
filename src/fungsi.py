@@ -188,7 +188,7 @@ def WordData(array_of_string):
         for j in range(len(array_of_array_of_words)):
             word_data[i][j] = word_count(word_list[i], array_of_array_of_words[j])
 
-    return word_data
+    return word_data, word_list
 
 
 # Menghasilkan array of integer yang terurut mengecil 
