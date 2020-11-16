@@ -18,7 +18,7 @@ Mesin pencarian merupakan cara untuk temu balik informasi.
 
 Mesin pencarian ini memodelkan `query` dan `term` sebagai model ruang vektor. Dengan menggunakan [cosine similiarity](https://en.wikipedia.org/wiki/Cosine_similarity) untuk perhitungannya. Kami belum akan menjelaskan secara detail disini.
 
-Namun, pada website yang kami buat ini menerima `query` dari pengguna dan me-*ranking* masukan file-file `.txt` oleh pengguna dalam bahasa inggris
+Pada dasarnya website yang kami buat ini menerima `query` dari pengguna dan me-*ranking* masukan file-file `.txt` berbahasa inggris.
 
 ## Sebelum memulai
 
