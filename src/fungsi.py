@@ -173,10 +173,6 @@ def WordData(array_of_string):
     # word_list adalah semua kata yang ada pada query dan semua dokumen
     word_list = word_list_total(array_of_array_of_words)
 
-    # Untuk debugging, nanti dihapus aja
-    # print(array_of_array_of_words)
-    # print(word_list)
-
     # inisiasi word data
     word_data = [[0 for j in range(len(array_of_array_of_words))]
                 for i in range(len(word_list))]
@@ -188,7 +184,7 @@ def WordData(array_of_string):
         for j in range(len(array_of_array_of_words)):
             word_data[i][j] = word_count(word_list[i], array_of_array_of_words[j])
 
-    return word_data, word_list
+    return word_data
 
 
 # Menghasilkan array of integer yang terurut mengecil 
