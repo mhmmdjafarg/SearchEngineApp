@@ -41,7 +41,7 @@ Pastikan sudah menginstall hal-hal berikut pada perangkat yang digunakan
 ![Clone and running](/readme-material/clone.gif)
 
 - Clone repository ini pada terminal : `git clone https://github.com/mhmmdjafarg/SearchEngineApp.git`
-- Buka directory folder website `src`, kemudian jalankan `python app.py`
+- Buka directory folder website `src`, kemudian jalankan pada terminal `python app.py`
 - Secara default website akan dijalankan pada `http://127.0.0.1:5000/`
 
 
